@@ -5,6 +5,9 @@ interface PersonaMap {
 }
 
 interface PersonaData {
+    own?: string;
+    buy?: string;
+    fuse?: string;
     name?: string; // only for when converted to list
     arcana: string;
     level: number;

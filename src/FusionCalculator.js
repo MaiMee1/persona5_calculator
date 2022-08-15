@@ -41,6 +41,9 @@ var FusionCalculator = /** @class */ (function () {
     FusionCalculator.prototype.getAllResultingRecipesFrom = function (persona) {
         var recipes = [];
         for (var i = 0; i < customPersonaList.length; i++) {
+            customPersonaList[i].fuse = (isPersonaFuse(customPersonaList[i].name) ? "y" : "n");
+            customPersonaList[i].buy = (isPersonaBuy(customPersonaList[i].name) ? "y" : "n");
+            customPersonaList[i].own = (isPersonaOwn(customPersonaList[i].name) ? "y" : "n");
             var result = this.fuse(persona, customPersonaList[i]);
             if (result !== null) {
                 var recipe = {

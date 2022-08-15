@@ -25,6 +25,20 @@ class PersonaController {
 
         // fusion to
         let fusionToRecipes = calc.getRecipes(this.$scope.persona);
+        const catchable = (sources: PersonaData[]): number => {
+            const r: number[] = sources.map((a) => isPersonaFuse(a.name) ? 1 : 0);
+            return r.reduce((a,b) => a + b) / r.length;
+        }
+        fusionToRecipes = fusionToRecipes.map((recipe) => {
+            if (catchable(recipe.sources) === 0) return recipe;
+            let cost = 0;
+            for (let i = 0, source = null; source = recipe.sources[i]; i++) {
+                if (catchable([source]) > 0) continue;
+                let level = source.level;
+                cost += (27 * level * level) + (126 * level) + 2147;
+            }
+            recipe.cost = cost; return recipe;
+        });
         fusionToRecipes.sort((a,b) => a.cost - b.cost);
         for (let i = 0, recipe = null; recipe = fusionToRecipes[i]; i++) {
             recipe.num = i;

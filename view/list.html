@@ -12,6 +12,9 @@
 <table id="list" cellspacing="0" class="ui table striped sortable unstackable" sticky-table>
     <thead>
     <tr>
+        <th><a ng-click="sortBy = 'own'; sortReverse = !sortReverse">Own</a></th>
+        <th><a ng-click="sortBy = 'buy'; sortReverse = !sortReverse">Buy</a></th>
+        <th><a ng-click="sortBy = 'fuse'; sortReverse = !sortReverse">Fuse</a></th>
         <th><a ng-click="sortBy = 'level'; sortReverse = !sortReverse">Level</a></th>
         <th><a ng-click="sortBy = 'name'; sortReverse = !sortReverse">Name</a></th>
         <th><a ng-click="sortBy = 'arcana'; sortReverse = !sortReverse">Arcana</a></th>
@@ -34,6 +37,24 @@
     </thead>
     <tbody>
     <tr ng:repeat="persona in fullPersonaList | orderBy:sortFunc:sortReverse | filter:filterStr">
+        <td>
+            <div class="ui checkbox">
+                <input type="checkbox" name="{{persona.name}}" ng-checked="persona.own=='y'" class="ownCheckbox" ng-click="saveOwn()">
+                <label></label>
+            </div>
+        </td>
+        <td>
+            <div class="ui checkbox">
+                <input type="checkbox" name="{{persona.name}}" ng-checked="persona.buy=='y'" class="buyCheckbox" ng-click="saveBuy()">
+                <label></label>
+            </div>
+        </td>
+        <td>
+            <div class="ui checkbox">
+                <input type="checkbox" name="{{persona.name}}" ng-checked="persona.fuse=='y'" class="fuseCheckbox" ng-click="saveFuse()">
+                <label></label>
+            </div>
+        </td>
         <td>{{persona.level}}</td>
         <td class="left-border">
             <a class="persona-name" href='#/persona/{{persona.name}}'>{{persona.name}}</a>

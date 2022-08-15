@@ -29,6 +29,24 @@ function isDlcPersonaOwned(dlcPersona: string): boolean {
     return JSON.parse(localStorage["dlcPersona"])[dlcPersona] === true;
 }
 
+function isPersonaFuse(dlcPersona: string): boolean {
+    if (!localStorage["fusePersona"])
+        return false;
+    return JSON.parse(localStorage["fusePersona"])[dlcPersona] === true;
+}
+
+function isPersonaBuy(dlcPersona: string): boolean {
+    if (!localStorage["buyPersona"])
+        return false;
+    return JSON.parse(localStorage["buyPersona"])[dlcPersona] === true;
+}
+
+function isPersonaOwn(dlcPersona: string): boolean {
+    if (!localStorage["ownPersona"])
+        return false;
+    return JSON.parse(localStorage["ownPersona"])[dlcPersona] === true;
+}
+
 function toggleDark() {
     const html = document.getElementsByTagName("html")[0];
     if (html.hasAttribute("dark")) {

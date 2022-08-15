@@ -48,6 +48,9 @@ class FusionCalculator {
     public getAllResultingRecipesFrom(persona: PersonaData): Recipe[] {
         let recipes: Recipe[] = [];
         for (let i = 0; i < customPersonaList.length; i++) {
+            customPersonaList[i].fuse = (isPersonaFuse(customPersonaList[i].name) ? "y" : "n");
+            customPersonaList[i].buy = (isPersonaBuy(customPersonaList[i].name) ? "y" : "n");
+            customPersonaList[i].own = (isPersonaOwn(customPersonaList[i].name) ? "y" : "n");
             let result = this.fuse(persona, customPersonaList[i]);
             if (result !== null) {
                 let recipe = {

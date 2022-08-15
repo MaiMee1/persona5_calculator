@@ -172,6 +172,12 @@ html[dark] .nu, .Null { color: var(--theme-gray) !important; }
 html[dark] .rp, .Repel { color: var(--dark-theme-yellow) !important; }
 html[dark] .ab, .Absorb { color: var(--dark-theme-green) !important; }
 
+.bold { font-weight: bold; }
+.text-green { color: var(--theme-green); }
+.text-red { color: var(--theme-red); }
+html[dark] .text-green { color: var(--dark-theme-green); }
+html[dark] .text-red { color: var(--dark-theme-red); }  // danger has higher priority
+
 .left-border {
     border-left: 1px solid rgba(34,36,38,.1) !important;
 }

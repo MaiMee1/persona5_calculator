@@ -18,6 +18,23 @@ var PersonaController = /** @class */ (function () {
         this.$scope.perPage = 20;
         // fusion to
         var fusionToRecipes = calc.getRecipes(this.$scope.persona);
+        var catchable = function (sources) {
+            var r = sources.map(function (a) { return isPersonaFuse(a.name) ? 1 : 0; });
+            return r.reduce(function (a, b) { return a + b; }) / r.length;
+        };
+        fusionToRecipes = fusionToRecipes.map(function (recipe) {
+            if (catchable(recipe.sources) === 0)
+                return recipe;
+            var cost = 0;
+            for (var i = 0, source = null; source = recipe.sources[i]; i++) {
+                if (catchable([source]) > 0)
+                    continue;
+                var level = source.level;
+                cost += (27 * level * level) + (126 * level) + 2147;
+            }
+            recipe.cost = cost;
+            return recipe;
+        });
         fusionToRecipes.sort(function (a, b) { return a.cost - b.cost; });
         for (var i = 0, recipe = null; recipe = fusionToRecipes[i]; i++) {
             recipe.num = i;
