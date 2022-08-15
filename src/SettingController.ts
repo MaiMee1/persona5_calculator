@@ -5,6 +5,7 @@ class SettingController {
     constructor($scope) {
         $scope.dlcPersona = dlcPersona;
         $scope.save = this.save;
+        $scope.toggleDark = toggleDark;
 
         for (let i = 0; i < dlcPersona.length; i++) {
             dlcPersona[i][2] = (isDlcPersonaOwned(dlcPersona[i][0])? "y" : "n");

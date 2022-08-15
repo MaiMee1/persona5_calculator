@@ -11,7 +11,6 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/favicon/192x192.png">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-table-headers/0.1.19/js/jquery.stickytableheaders.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
@@ -21,6 +20,9 @@
     <script src="data/SkillData.js"></script>
     <script>
         var GLOBAL_IS_ROYAL = false;
+        if (localStorage["dark"] && localStorage["dark"] === "y") {
+            document.getElementsByTagName("html")[0].setAttribute("dark", "");
+        }
     </script>
     <script src="src/DataUtil.js"></script>
     <script src="src/FusionCalculator.js"></script>
@@ -37,7 +39,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/components/container.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/components/checkbox.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/components/form.min.css">
-
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <a href="https://github.com/chinhodado/persona5_calculator" class="mobile-hidden">
@@ -47,7 +49,7 @@
     </a>
     <div id="content">
         <h3><a href="index.html">Persona 5 Fusion Calculator</a></h3>
-        <h4 style="background-color: bisque;">Click <a href="indexRoyal.html">here</a> for the Royal version</h4>
+        <h4 class="notice-bar">Click <a href="indexRoyal.html">here</a> for the Royal version</h4>
         <div class="desktop-hidden" style="margin-bottom:10px"><b><a href="https://github.com/chinhodado/persona5_calculator">View code on GitHub</a></b></div>
         <b><a href="#/list/">Persona</a></b> - <b><a href="#/skill/">Skills</a></b> - <b><a href="#/setting/">Settings</a></b>
         <ng-view ng-app="myModule"></ng-view>

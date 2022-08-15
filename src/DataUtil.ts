@@ -29,6 +29,17 @@ function isDlcPersonaOwned(dlcPersona: string): boolean {
     return JSON.parse(localStorage["dlcPersona"])[dlcPersona] === true;
 }
 
+function toggleDark() {
+    const html = document.getElementsByTagName("html")[0];
+    if (html.hasAttribute("dark")) {
+        html.removeAttribute("dark");
+        localStorage["dark"] = "n";
+    } else {
+        html.setAttribute("dark", "");
+        localStorage["dark"] = "y";
+    }
+}
+
 /**
  * List of persona with DLC persona potentially removed based on user config
  */

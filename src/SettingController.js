@@ -3,6 +3,7 @@ var SettingController = /** @class */ (function () {
     function SettingController($scope) {
         $scope.dlcPersona = dlcPersona;
         $scope.save = this.save;
+        $scope.toggleDark = toggleDark;
         for (var i = 0; i < dlcPersona.length; i++) {
             dlcPersona[i][2] = (isDlcPersonaOwned(dlcPersona[i][0]) ? "y" : "n");
         }
